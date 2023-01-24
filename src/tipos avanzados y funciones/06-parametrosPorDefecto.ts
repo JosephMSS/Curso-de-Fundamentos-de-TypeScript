@@ -3,7 +3,11 @@ type Product = {
   stock?: number;
   isNew?: boolean;
 };
-export const createProduct = (product: Product): Product => {
+export const createProduct = ({
+  id,
+  stock = 12,
+  isNew = true,
+}: Product): Product => {
   /**
    * Usamos ?? ya que corrige los problemas
    * que tiene || ya qu este toma valores
@@ -15,10 +19,10 @@ export const createProduct = (product: Product): Product => {
    * y en caso de que is new sea false, retornara true
    */
   return {
-    id: product.id,
-    stock: product.stock ?? 10,
-    isNew: product.isNew ?? true,
+    id,
+    isNew,
+    stock,
   };
 };
 const product: Product = createProduct({ id: 12 });
-console.log("🚀 ~ file: 05-ParametrosOpcionales.ts:24 ~ product", product)
+console.log("🚀 ~ file: 05-ParametrosOpcionales.ts:24 ~ product", product);
