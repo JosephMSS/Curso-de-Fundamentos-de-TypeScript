@@ -2,17 +2,17 @@
  * Funciona para definir un conjunto de variables 
  * en la aplicación
  */
-enum LABELS {
+export enum LABELS {
   COMPLETE = "Completo",
   INCOMPLETE = "Incompleto",
   NEW = "Nuevo",
 }
-enum STATES {
+export enum STATES {
   NEW = "Nuevo",
   DUPLICATE = "Duplicado",
   UPDATED = "Actualizado",
 }
-type Form = {
+export type Form = {
   state: STATES;
   label: LABELS;
 };
