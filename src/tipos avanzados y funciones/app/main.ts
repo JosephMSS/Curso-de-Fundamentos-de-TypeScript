@@ -14,3 +14,4 @@ const product: Product = {
     createdAt: new Date(),
   },
 };
+addProduct(product);
