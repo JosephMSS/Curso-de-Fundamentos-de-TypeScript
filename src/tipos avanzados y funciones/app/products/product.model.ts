@@ -9,6 +9,12 @@ export enum SIZES {
 export type Sizes = "M" | "S" | "L" | "XL";
 export interface Product extends BaseModel {
   title: string;
+  image: string;
+  description: string;
+  color: string;
+  price: number;
+  isNew: boolean;
+  tags: string[];
   stock: number;
   sizes: SIZES;
   category: Category;
