@@ -5,12 +5,29 @@
 /**
  * Solo funciona en este tipo de funciones
  */
-function parseString(input: string | string[]): string | string[] {
+export function parseString(str: string): string[]; //estas son solo las definiciones de la funcion
+export function parseString(str: string[]): string;
+// export function parseString(input: string | string[]): string | string[] {
+//   const isArray = Array.isArray(input);
+//   if (isArray) {
+//     return input.join("");
+//   }
+//   return input.split("");
+// }
+/**
+ * 
+ * @param input Agregamos el unknown por si queremos hacer mas sobrecargas
+ * @returns 
+ */
+export function parseString(input: unknown): unknown {
   const isArray = Array.isArray(input);
+  const isString = typeof input === "string";
   if (isArray) {
-    return input.join();
+    return input.join("");
   }
-  return input.split("");
+  if (isString) {
+    return input.split("");
+  }
 }
 const rtaArray = parseString("Nico");
 const rtaString = parseString(["N", "i", "c", "o"]);
