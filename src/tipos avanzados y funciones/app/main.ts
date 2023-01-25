@@ -1,23 +1,13 @@
 import { Product, SIZES } from "./products/product.model";
-import { addProduct,products} from "./products/product.service";
+import { addProduct, products } from "./products/product.service";
 import { faker } from "@faker-js/faker";
 import { Category } from "./categories/category.model";
 import { BaseModel } from "./base.model";
+import { CreateProductDto } from "./products/products.dto";
 
 for (let i = 0; i < 50; i++) {
-  const baseModel = (): BaseModel => {
-    return {
-      id: faker.datatype.uuid(),
-      createdAt: faker.date.past(),
-      updatedAt: faker.date.future(),
-    };
-  };
-  const category: Category = {
-    ...baseModel(),
-    name: faker.commerce.department(),
-  };
-  const product: Product = {
-    ...baseModel(),
+  
+  const product: CreateProductDto = {
     title: faker.commerce.productName(),
     description: faker.commerce.productDescription(),
     image: faker.image.food(),
@@ -27,8 +17,8 @@ for (let i = 0; i < 50; i++) {
     tags: faker.helpers.arrayElement(),
     stock: faker.datatype.number(),
     sizes: faker.helpers.arrayElement([SIZES.L, SIZES.M, SIZES.S, SIZES.XL]),
-    category,
+    categoryId: category.id,
   };
   addProduct(product);
 }
-console.log("🚀 ~ file: main.ts:35 ~ products", products)
+console.log("🚀 ~ file: main.ts:35 ~ products", products);
